@@ -266,6 +266,6 @@ ProGuardをかけてあげると大人しくなりました…
 -keepclasseswithmembers class * { @com.activeandroid.annotation.Column <fields>; }
 ```
 ---
-class: middle, center, image-background
+class: middle, center, image-background, inverse
 
 # Zaimではエンジニアを募集してます！
