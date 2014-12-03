@@ -127,9 +127,6 @@ public static final String CONTENT_AUTHORITY = BuildConfig.APPLICATION_ID;
 ```
 
 ---
-layout: false
-
----
 layout: true
 # Schema migrations
 
@@ -159,8 +156,8 @@ migrationに失敗するケースがある。
 
 --
 
-2 -> 3のアップデートは成功する
-1 -> 3のアップデートは失敗する
+- 2 -> 3のアップデートは成功する
+- 1 -> 3のアップデートは失敗する
 
 ---
 ## 失敗する原因
@@ -193,9 +190,10 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 ## 解決策
 
 （いや、これバグだろというissueもあるけど…）
+
 テーブルを作り直すようにするSQLスクリプトにする。
 
-```
+```txt
 CREATE TABLE Temp (Id INTEGER AUTO_INCREMENT PRIMARY KEY, Column TEXT NOT NULL, Column2 INTEGER NULL);
 INSERT INTO Temp (Id, Column, Column2) SELECT Id, Column, 0 FROM Entity;
 DROP TABLE Items;
@@ -203,7 +201,7 @@ ALTER TABLE Temp RENAME TO Items;
 ```
 --
 
-見づらくてメンテしづらそう…。
+ただ、これも見づらくてメンテしづらそう…。
 
 ---
 ## 解決策つづき
@@ -268,3 +266,5 @@ ProGuardをかけてあげると大人しくなりました…
 -keepclasseswithmembers class * { @com.activeandroid.annotation.Column <fields>; }
 ```
 ---
+class: middle, center
+# Zaimではエンジニアを募集してます！
