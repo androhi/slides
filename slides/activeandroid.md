@@ -143,7 +143,7 @@ assetsフォルダに入れておくと、DBバージョンが上がったとき
 ```
 
 `assets/migrations/<NewVersion>.sql`
-```
+```txt
 ALTER TABLE Items ADD COLUMN color INTEGER;
 ```
 
@@ -158,6 +158,7 @@ migrationに失敗するケースがある。
 3. v1.0.2 : Itemsテーブルにカラム追加
 
 --
+
 2 -> 3のアップデートは成功する
 1 -> 3のアップデートは失敗する
 
@@ -208,6 +209,7 @@ ALTER TABLE Temp RENAME TO Items;
 ## 解決策つづき
 
 コメント＋複数行に対応したらしい（試してません）
+
 参考元: [Added a new SQL parser for migrations. #215](https://github.com/pardom/ActiveAndroid/pull/215)
 
 ```xml
@@ -215,7 +217,7 @@ ALTER TABLE Temp RENAME TO Items;
     android:name="AA_SQL_PARSER"
     android:value="delimited" />
 ```
-```
+```txt
 -- Create table for migration
 CREATE TABLE Temp
 (
@@ -244,17 +246,19 @@ ALTER TABLE Temp RENAME TO Items;
 ---
 layout: false
 
----
 # Android 5.0対応
 
 API 21でイニシャライズでクラッシュする問題がある
 そしてまだ対応中らしい。（関連するPullReqはあるにはあるけど…）
+
 [Problem initializing ActiveAndroid in API 21 #283](https://github.com/pardom/ActiveAndroid/issues/283)
 
 **解決策？**
+
 ProGuardをかけてあげると大人しくなりました…
 （なぜだか理解できてません）
-```
+
+```txt
 -libraryjars ./Zaim/libs/activeandroid.jar
 -keep class com.activeandroid.** { *; }
 -keep class com.activeandroid.**.** { *; }
@@ -263,5 +267,4 @@ ProGuardをかけてあげると大人しくなりました…
 -keepattributes Table
 -keepclasseswithmembers class * { @com.activeandroid.annotation.Column <fields>; }
 ```
-
 ---
