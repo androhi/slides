@@ -267,4 +267,6 @@ ProGuardをかけてあげると大人しくなりました…
 ```
 ---
 class: middle, center
+background-image: url(ebisu.jpg)
+
 # Zaimではエンジニアを募集してます！
