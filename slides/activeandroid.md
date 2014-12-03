@@ -21,6 +21,7 @@ Android開発アンチパターン勉強会#1
 
 ---
 # ActiveAndroidについて
+ActiveRecordスタイルのORM（Object Relational Mapper）ライブラリ
 
 ---
 # ContentProvider対応
