@@ -1,7 +1,3 @@
-layout: true
-class: inverse
-
----
 class: center, middle
 
 # ActiveAndroidあれこれ
@@ -10,6 +6,7 @@ Android開発アンチパターン勉強会#1
 
 ---
 # あれこれ
+:
 ### 1. 自己紹介
 ### 2. ActiveAndroidについて
 ### 3. ContentProvider対応
@@ -18,15 +15,18 @@ Android開発アンチパターン勉強会#1
 
 ---
 # 自己紹介
-### 株式会社Zaim
-### Androidアプリ担当
-### Tech Institute サポート講師
+:
+### * 株式会社Zaim
+### * Androidアプリ担当
+### * Tech Institute サポート講師
 
 ---
 # ActiveAndroidについて
-### ActiveRecordスタイルのORM（Object Relational Mapper）ライブラリ
-### SQLステートメントを書かずにDBにアクセスできる
+:
+### * ActiveRecordスタイルのORM（Object Relational Mapper）ライブラリ
+### * SQLステートメントを書かずにDBにアクセスできる
 
+新しいレコードをInsertする例:
 ```java
 MyEntityClass myEntity = new MyEntityClass();
 myEntity.name = "hoge";
@@ -34,12 +34,14 @@ myEntity.save();
 ```
 
 ---
+layout: true
 # ContentProvider対応
 
+---
 ## ActiveAndroidでContentProviderを使う方法
-- Manifestファイルに<provider>を定義
+- Manifestファイルに`<provider>`を定義
 - ModelクラスのIDを変更
-
+:
 ```xml
 <provider android:authorities="com.example"
           android:exported="false"
@@ -82,6 +84,8 @@ URI contentUri = ContentProvider.createUri(MyEntityClass.class, null);
 ```
 
 ---
+## こんなケースで困る
+
 PackageNameに依存するAuthorityを使用しているため
 build.gradleでapplicationIdSuffixとか付けると
 providerの参照が取れなくなってしまう
